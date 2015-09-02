@@ -12,7 +12,7 @@
 
 namespace tecolor {
 
-Tristimulus Refl2XYZ(Illuminant &ill, ColorMatchingFunction &cmf, SpectraMatrix &refl);
+Tristimulus Refl2XYZ(const Illuminant &ill, const ColorMatchingFunction &cmf, const SpectraMatrix &refl);
 
 }
 
