@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "ColorMatchingFunction.h"
+#include "EigenUtils.h"
 
 namespace tecolor {
 
@@ -14,6 +15,7 @@ using Eigen::VectorXd;
 ColorMatchingFunction::ColorMatchingFunction(ColorMatchingFunctionObserver obs)
     : spectra_(new Spectra()) {
 
+  auto num_samples = &CMF_1931_2DEG_NUM_SAMPLES;
   auto wavelengths = &CMF_1931_2DEG_WAVELENGTHS;
   auto data = &CMF_1931_2DEG;
 
@@ -26,37 +28,20 @@ ColorMatchingFunction::ColorMatchingFunction(ColorMatchingFunctionObserver obs)
       break;
   }
 
-  EigenMatrixTransposeInitializer(spectra_->spectra(), CMF_1931_2DEG_NUM_SAMPLES, 3, data);
-  EigenVectorInitializer(spectra_->wavelengths(), CMF_1931_2DEG_NUM_SAMPLES, wavelengths);
+  EigenMatrixTransposeInitializer(spectra_->spectra(), *num_samples, 3, data);
+  EigenVectorInitializer(spectra_->wavelengths(), *num_samples, wavelengths);
 
 }
 
-void ColorMatchingFunction::EigenMatrixTransposeInitializer(Eigen::MatrixXd &m,
-                                                            Index rows,
-                                                            Index cols,
-                                                            const std::vector<std::vector<Value>> * data) {
-  m.resize(rows, cols);
-  std::cout << rows << " " << cols << " "<< std::endl;
-  for (Index i = 0; i < rows; ++i) {
-    for (Index j = 0; j < cols; ++j) {
-      m(i, j) = (*data)[j][i];
-    }
-  }
-}
-
-void ColorMatchingFunction::EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Value> * data) {
-  v.resize(size);
-  for (Index i = 0; i < size; ++i) {
-    v(i) = (*data)[i];
-  }
-}
 
 
-const Eigen::MatrixX3d ColorMatchingFunction::cmf() const {
+const Eigen::MatrixXd& ColorMatchingFunction::cmf() const {
   return spectra_->spectra();
 }
 
 
-
+const Eigen::VectorXd &ColorMatchingFunction::wavelengths() const {
+  return spectra_->wavelengths();
+}
 
 }

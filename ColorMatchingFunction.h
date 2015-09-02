@@ -18,12 +18,10 @@ enum ColorMatchingFunctionObserver {
 
 class ColorMatchingFunction {
   std::shared_ptr<Spectra> spectra_;
-  void EigenMatrixTransposeInitializer(Eigen::MatrixXd &m, Index rows, Index cols, const std::vector<std::vector<Value>> * data);
-  void EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Value> * data);
  public:
   ColorMatchingFunction(ColorMatchingFunctionObserver obs);
   ColorMatchingFunction(ColorMatchingFunctionObserver obs, std::string database_path);
-  const Eigen::MatrixX3d cmf() const;
+  const Eigen::MatrixXd& cmf() const;
   const Eigen::VectorXd& x() const;
   const Eigen::VectorXd& y() const;
   const Eigen::VectorXd& z() const;
