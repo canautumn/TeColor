@@ -6,11 +6,12 @@
 #define TECOLOR_SPECTRA_H
 
 #include <Eigen/Dense>
+#include "SpectraMatrix.h"
 #include "typedefs.h"
 
 namespace tecolor {
 
-class Spectra {
+class Spectra : public SpectraMatrix {
   std::shared_ptr<Eigen::MatrixXd> data_;
   std::shared_ptr<Eigen::VectorXd> wavelengths_;
  public:
@@ -25,6 +26,7 @@ class Spectra {
   std::shared_ptr<Eigen::MatrixXd> get_data_ptr();
   std::shared_ptr<Eigen::VectorXd> get_wavelengths_ptr();
   const Eigen::MatrixXd& spectra() const;
+  const Eigen::VectorXd spectrum_at(Index index) const;
   const Eigen::VectorXd& wavelengths() const;
   Eigen::MatrixXd& spectra();
   Eigen::VectorXd& wavelengths();

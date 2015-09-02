@@ -38,7 +38,7 @@ Spectra::Spectra(const Eigen::MatrixXd &data,
   }
 }
 
-Spectra::Spectra(const tecolor::Spectra &spectra)
+Spectra::Spectra(const Spectra &spectra)
     : data_(new MatrixXd(spectra.spectra())),
       wavelengths_(new VectorXd(spectra.wavelengths())) { }
 
@@ -78,5 +78,9 @@ Eigen::VectorXd &Spectra::wavelengths() {
 }
 
 Spectra::Spectra() : data_(new MatrixXd()), wavelengths_(new VectorXd()) { }
+
+const Eigen::VectorXd Spectra::spectrum_at(Index index) const {
+  return data_->col(index);
+}
 
 } // namespace tecolor

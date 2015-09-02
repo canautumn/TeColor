@@ -22,9 +22,9 @@ class ColorMatchingFunction {
   ColorMatchingFunction(ColorMatchingFunctionObserver obs);
   ColorMatchingFunction(ColorMatchingFunctionObserver obs, std::string database_path);
   const Eigen::MatrixXd& cmf() const;
-  const Eigen::VectorXd& x() const;
-  const Eigen::VectorXd& y() const;
-  const Eigen::VectorXd& z() const;
+  const Eigen::VectorXd x() const;
+  const Eigen::VectorXd y() const;
+  const Eigen::VectorXd z() const;
   const Eigen::VectorXd& wavelengths() const;
 };
 
