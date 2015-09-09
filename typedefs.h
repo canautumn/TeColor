@@ -7,7 +7,12 @@
 
 #include <cstddef>
 
+namespace tecolor {
+
 typedef std::ptrdiff_t Index;
 typedef double Value;
+typedef Eigen::MatrixXd Mat;
+
+} // namespace tecolor
 
 #endif //TECOLOR_TYPEDEFS_H

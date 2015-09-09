@@ -18,25 +18,35 @@ Primaries::Primaries(Index num_primaries,
   if (primary_names.size() != num_primaries) {
     throw std::invalid_argument("The number of primaries provided should be equal to the number of primary names.");
   }
+  init_primary_indexes();
+
 }
 
 Primaries::Primaries(std::shared_ptr<Eigen::MatrixXd> data,
                      std::vector<std::string> primary_names)
     : data_(new MatrixXd(*data)),
-      primary_names_(primary_names) { }
+      primary_names_(primary_names) {
+  init_primary_indexes();
+}
 
 Primaries::Primaries(const Eigen::MatrixXd &data,
                      const std::vector<std::string> primary_names)
     : data_(new MatrixXd(data)),
-      primary_names_(primary_names) { }
+      primary_names_(primary_names) {
+  init_primary_indexes();
+}
 
 Primaries::Primaries(const Primaries &primaries)
     : data_(new MatrixXd(primaries.data())),
-      primary_names_(primaries.primary_names()) { }
+      primary_names_(primaries.primary_names()) {
+  init_primary_indexes();
+}
 
 const Primaries &Primaries::operator=(const Primaries &primaries) {
   data_.reset(new MatrixXd(primaries.data()));
   primary_names_ = primaries.primary_names();
+  primary_indexes_ = primaries.primary_indexes_;
+
   return *this;
 }
 
@@ -59,6 +69,20 @@ Eigen::MatrixXd &Primaries::data() {
 
 std::vector<std::string> &Primaries::primary_names() {
   return primary_names_;
+}
+
+const Eigen::VectorXd Primaries::primary(std::string primary_name) const {
+  auto index_pair = primary_indexes_.find(primary_name);
+  if (index_pair == primary_indexes_.end()) {
+    throw std::invalid_argument("Wrong primary name.");
+  }
+  return data_->row(index_pair->second);
+}
+
+void Primaries::init_primary_indexes() {
+  for (size_t i = 0; i < primary_names_.size(); ++i) {
+    primary_indexes_.insert(make_pair(primary_names_[i], i));
+  }
 }
 
 }

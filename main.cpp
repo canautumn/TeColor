@@ -19,5 +19,14 @@ int main() {
   auto xyz = Refl2XYZ(d65, cmf19312d, cc);
   cout << "Calculated ColorChecker Tristimulus Values:" << endl;
   cout << xyz.XYZ() << endl;
+  cout << "CIE Illuminant D65 Yxy:" << endl;
+  auto Yxy = Rad2Yxy(d65, cmf19312d);
+  cout << Yxy.data() << endl;
+  cout << "CIE Illuminant D65 xy (chromaticity coordinates):" << endl;
+  auto xy = Rad2xy(d65, cmf19312d);
+  cout << xy.data() << endl;
+  cout << "CIELAB of ColorChecker under D65:" << endl;
+  auto lab = XYZ2Lab(xy, xyz);
+  cout << lab.Lab() << endl;
   return 0;
 }

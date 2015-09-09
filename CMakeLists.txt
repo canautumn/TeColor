@@ -7,5 +7,5 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-set(SOURCE_FILES main.cpp Spectra.cpp Spectra.h typedefs.h ColorMatchingFunction.cpp ColorMatchingFunction.h builtin_database.h EigenUtils.cpp EigenUtils.h Illuminant.cpp Illuminant.h Primaries.cpp Primaries.h Tristimulus.cpp Tristimulus.h SpectralKit.cpp SpectralKit.h ReflectanceSet.cpp ReflectanceSet.h SpectraMatrix.h)
+set(SOURCE_FILES main.cpp Spectra.cpp Spectra.h typedefs.h ColorMatchingFunction.cpp ColorMatchingFunction.h builtin_database.h EigenUtils.cpp EigenUtils.h Illuminant.cpp Illuminant.h Primaries.cpp Primaries.h Tristimulus.cpp Tristimulus.h SpectralKit.cpp SpectralKit.h ReflectanceSet.cpp ReflectanceSet.h SpectraMatrix.h CIELAB.cpp CIELAB.h)
 add_executable(TeColor ${SOURCE_FILES})

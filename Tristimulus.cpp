@@ -37,9 +37,21 @@ const Eigen::MatrixXd &Tristimulus::XYZ() const {
 }
 
 Tristimulus::Tristimulus(const Eigen::MatrixXd &data)
-    : primaries_(std::make_shared<Primaries>(data, std::vector<std::string>({"X", "Y", "Z"}))) {
+    : primaries_(std::make_shared<Primaries>(Eigen::MatrixXd(data), std::vector<std::string>({"X", "Y", "Z"}))) {
   if (data.rows() != 3) {
     throw std::invalid_argument("The number of rows of the matrix to construct tristimulus matrix should be 3.");
   }
 }
+const Eigen::VectorXd Tristimulus::X() const {
+  return primaries_->primary("X");
+}
+
+const Eigen::VectorXd Tristimulus::Y() const {
+  return primaries_->primary("Y");
+}
+
+const Eigen::VectorXd Tristimulus::Z() const {
+  return primaries_->primary("Z");
+}
+
 }

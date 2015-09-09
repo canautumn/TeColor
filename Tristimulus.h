@@ -19,6 +19,9 @@ class Tristimulus {
   Tristimulus(const Eigen::MatrixXd &data);
   const Tristimulus& operator=(const Tristimulus&);
   const Eigen::MatrixXd& XYZ() const;
+  const Eigen::VectorXd X() const;
+  const Eigen::VectorXd Y() const;
+  const Eigen::VectorXd Z() const;
 };
 
 

@@ -7,6 +7,7 @@
 
 #include <Eigen/Dense>
 #include <vector>
+#include <unordered_map>
 #include "typedefs.h"
 
 namespace tecolor {
@@ -15,6 +16,8 @@ namespace tecolor {
 class Primaries {
   std::shared_ptr<Eigen::MatrixXd> data_;
   std::vector<std::string> primary_names_;
+  std::unordered_map<std::string, Index> primary_indexes_;
+  void init_primary_indexes();
  public:
   Primaries();
   Primaries(Index num_primaries,
@@ -31,6 +34,7 @@ class Primaries {
   const std::vector<std::string>& primary_names() const;
   Eigen::MatrixXd& data();
   std::vector<std::string>& primary_names();
+  const Eigen::VectorXd primary(std::string primary_name) const;
 };
 
 } // namespace tecolor
