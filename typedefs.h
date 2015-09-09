@@ -12,6 +12,7 @@ namespace tecolor {
 typedef std::ptrdiff_t Index;
 typedef double Value;
 typedef Eigen::MatrixXd Mat;
+typedef Eigen::VectorXd Vec;
 
 } // namespace tecolor
 

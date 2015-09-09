@@ -28,6 +28,6 @@ class ColorMatchingFunction {
   const Eigen::VectorXd& wavelengths() const;
 };
 
-}
+} // namespace tecolor
 
 #endif //TECOLOR_COLORMATCHINGFUNCTION_H
