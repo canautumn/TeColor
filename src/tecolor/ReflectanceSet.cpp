@@ -2,9 +2,9 @@
 // Created by Can on 9/2/15.
 //
 
-#include "ReflectanceSet.h"
-#include "builtin_database.h"
-#include "EigenUtils.h"
+#include <TeColor/ReflectanceSet.h>
+#include <TeColor/builtin_database.h>
+#include <TeColor/EigenUtils.h>
 
 namespace tecolor {
 

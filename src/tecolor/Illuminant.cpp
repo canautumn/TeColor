@@ -3,7 +3,7 @@
 //
 
 #include <Eigen/Dense>
-#include "Illuminant.h"
+#include <TeColor/Illuminant.h>
 
 namespace tecolor {
 

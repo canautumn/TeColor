@@ -2,7 +2,7 @@
 // Created by Can on 9/2/15.
 //
 
-#include "Primaries.h"
+#include <TeColor/Primaries.h>
 
 namespace tecolor {
 

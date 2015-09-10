@@ -1,5 +1,5 @@
 #include <iostream>
-#include "SpectralKit.h"
+#include <TeColor/SpectralKit.h>
 
 using namespace std;
 using namespace tecolor;

@@ -3,7 +3,7 @@
 //
 
 
-#include "EigenUtils.h"
+#include <TeColor/EigenUtils.h>
 
 namespace tecolor {
 

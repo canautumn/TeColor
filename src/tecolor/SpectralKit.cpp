@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "SpectralKit.h"
+#include <TeColor/SpectralKit.h>
 
 using std::cout;
 using std::endl;

@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "ColorMatchingFunction.h"
-#include "EigenUtils.h"
+#include <TeColor/ColorMatchingFunction.h>
+#include <TeColor/EigenUtils.h>
 
 namespace tecolor {
 

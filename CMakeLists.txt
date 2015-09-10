@@ -7,10 +7,10 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-add_library(tecolor Spectra.cpp ColorMatchingFunction.cpp EigenUtils.cpp Illuminant.cpp Primaries.cpp Tristimulus.cpp SpectralKit.cpp ReflectanceSet.cpp CIELAB.cpp)
 
+set(TECOLOR_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
-set(SOURCE_FILES main.cpp)
-add_executable(tecolor_demo ${SOURCE_FILES})
-target_link_libraries(tecolor_demo tecolor)
+include_directories(${TECOLOR_INCLUDE_DIR})
+add_subdirectory(src/tecolor)
+add_subdirectory(demo)
 

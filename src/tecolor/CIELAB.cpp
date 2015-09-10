@@ -2,7 +2,7 @@
 // Created by Can on 9/9/15.
 //
 
-#include "CIELAB.h"
+#include <TeColor/CIELAB.h>
 
 namespace tecolor {
 

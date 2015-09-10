@@ -2,7 +2,7 @@
 // Created by Can on 9/2/15.
 //
 
-#include "Tristimulus.h"
+#include <TeColor/Tristimulus.h>
 
 namespace tecolor {
 

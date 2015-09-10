@@ -2,7 +2,7 @@
 // Created by Can on 9/1/15.
 //
 
-#include "Spectra.h"
+#include <TeColor/Spectra.h>
 
 namespace tecolor {
 
