@@ -12,13 +12,13 @@ namespace tecolor {
 
 Tristimulus Refl2XYZ(const Illuminant &ill, const ColorMatchingFunction &cmf, const SpectraMatrix &refl) {
   // Demo; to add interpolation
-  auto k = 100.0 / (ill.spectrum().transpose() * cmf.y())(0);
-  return Tristimulus(k * cmf.m().transpose() * ill.spectrum().asDiagonal() * refl.m());
+  auto k = 100.0 / (ill.m().transpose() * cmf.y())(0);
+  return Tristimulus(k * cmf.m().transpose() * ill.m().asDiagonal() * refl.m());
 }
 
 Primaries Rad2Yxy(const Illuminant &ill, const ColorMatchingFunction &cmf) {
   // Demo; to add interpolation
-  Tristimulus XYZ(683 * cmf.m().transpose() * ill.spectrum());
+  Tristimulus XYZ(683 * cmf.m().transpose() * ill.m());
   Mat sumXYZ = XYZ.m().colwise().sum();
 
   // Do not use type inference for array or matrix calculation.

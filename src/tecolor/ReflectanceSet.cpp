@@ -13,7 +13,7 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 ReflectanceSet::ReflectanceSet(tecolor::BuiltInReflectanceSetName refl)
-    : spectra_(new Spectra()){
+    : spectra_(new Spectra()) {
 
   auto num_samples = &REFL_SET_COLORCHECKER_NUM_SAMPLES;
   auto num_wavelengths = &REFL_SET_COLORCHECKER_NUM_WAVELENGTHS;

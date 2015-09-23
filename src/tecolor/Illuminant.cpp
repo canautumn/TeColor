@@ -30,7 +30,7 @@ Illuminant::Illuminant(IlluminantName ill)
   EigenVectorInitializer(spectra_->wavelengths(), *num_wavelengths, wavelengths);
 }
 
-const Eigen::VectorXd Illuminant::spectrum() const {
+const Eigen::VectorXd Illuminant::m() const {
   return spectra_->spectrum_at(0);
 }
 
@@ -38,6 +38,5 @@ const Eigen::VectorXd Illuminant::spectrum() const {
 const Eigen::VectorXd &Illuminant::wavelengths() const {
   return spectra_->wavelengths();
 }
-
 
 }

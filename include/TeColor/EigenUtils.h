@@ -16,10 +16,10 @@ void EigenMatrixTransposeInitializer
     (Eigen::MatrixXd &m, Index rows, Index cols, const std::vector<std::vector<Value>> *data);
 
 void EigenMatrix1ColumnInitializer(Eigen::MatrixXd &m,
-                                     Index rows,
-                                     const std::vector<Value> *data);
+                                   Index rows,
+                                   const std::vector<Value> *data);
 
-void EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Value> * data);
+void EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Value> *data);
 
 }
 

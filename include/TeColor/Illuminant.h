@@ -22,8 +22,8 @@ class Illuminant {
  public:
   Illuminant(IlluminantName ill);
   Illuminant(IlluminantName ill, std::string database_path);
-  const Eigen::VectorXd spectrum() const;
-  const Eigen::VectorXd& wavelengths() const;
+  const Eigen::VectorXd m() const;
+  const Eigen::VectorXd &wavelengths() const;
 };
 
 } // namespace tecolor

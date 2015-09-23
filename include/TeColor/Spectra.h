@@ -11,7 +11,7 @@
 
 namespace tecolor {
 
-class Spectra : public SpectraMatrix {
+class Spectra: public SpectraMatrix {
   std::shared_ptr<Eigen::MatrixXd> data_;
   std::shared_ptr<Eigen::VectorXd> wavelengths_;
  public:
@@ -19,17 +19,17 @@ class Spectra : public SpectraMatrix {
   Spectra(Index num_wavelengths, Index num_samples);
   Spectra(std::shared_ptr<Eigen::MatrixXd> data,
           std::shared_ptr<Eigen::VectorXd> wavelengths);
-  Spectra(const Eigen::MatrixXd& data,
-          const Eigen::VectorXd& wavelengths);
-  Spectra(const Spectra&);
-  const Spectra& operator=(const Spectra& spectra);
+  Spectra(const Eigen::MatrixXd &data,
+          const Eigen::VectorXd &wavelengths);
+  Spectra(const Spectra &);
+  const Spectra &operator=(const Spectra &spectra);
   std::shared_ptr<Eigen::MatrixXd> get_data_ptr();
   std::shared_ptr<Eigen::VectorXd> get_wavelengths_ptr();
-  const Eigen::MatrixXd& m() const;
+  const Eigen::MatrixXd &m() const;
   const Eigen::VectorXd spectrum_at(Index index) const;
-  const Eigen::VectorXd& wavelengths() const;
-  Eigen::MatrixXd& spectra();
-  Eigen::VectorXd& wavelengths();
+  const Eigen::VectorXd &wavelengths() const;
+  Eigen::MatrixXd &spectra();
+  Eigen::VectorXd &wavelengths();
 };
 
 } // namespace tecolor

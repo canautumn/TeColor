@@ -15,15 +15,14 @@ class Tristimulus {
  public:
   Tristimulus();
   Tristimulus(Index num_samples);
-  Tristimulus(const Tristimulus&);
+  Tristimulus(const Tristimulus &);
   Tristimulus(const Eigen::MatrixXd &data);
-  const Tristimulus& operator=(const Tristimulus&);
-  const Eigen::MatrixXd& m() const;
+  const Tristimulus &operator=(const Tristimulus &);
+  const Eigen::MatrixXd &m() const;
   const Eigen::VectorXd X() const;
   const Eigen::VectorXd Y() const;
   const Eigen::VectorXd Z() const;
 };
-
 
 }
 

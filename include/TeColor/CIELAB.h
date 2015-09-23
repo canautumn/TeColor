@@ -17,7 +17,7 @@ class CIELAB {
   CIELAB(const CIELAB &);
   CIELAB(const Eigen::MatrixXd &data);
   const CIELAB &operator=(const CIELAB &);
-  const Eigen::MatrixXd& m() const;
+  const Eigen::MatrixXd &m() const;
   const Eigen::VectorXd L() const;
   const Eigen::VectorXd a() const;
   const Eigen::VectorXd b() const;
