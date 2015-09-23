@@ -13,13 +13,13 @@ namespace tecolor {
 Tristimulus Refl2XYZ(const Illuminant &ill, const ColorMatchingFunction &cmf, const SpectraMatrix &refl) {
   // Demo; to add interpolation
   auto k = 100.0 / (ill.spectrum().transpose() * cmf.y())(0);
-  return Tristimulus(k * cmf.cmf().transpose() * ill.spectrum().asDiagonal() * refl.spectra());
+  return Tristimulus(k * cmf.m().transpose() * ill.spectrum().asDiagonal() * refl.m());
 }
 
 Primaries Rad2Yxy(const Illuminant &ill, const ColorMatchingFunction &cmf) {
   // Demo; to add interpolation
-  Tristimulus XYZ(683 * cmf.cmf().transpose() * ill.spectrum());
-  Mat sumXYZ = XYZ.XYZ().colwise().sum();
+  Tristimulus XYZ(683 * cmf.m().transpose() * ill.spectrum());
+  Mat sumXYZ = XYZ.m().colwise().sum();
 
   // Do not use type inference for array or matrix calculation.
   // The returning value is a stack-variable to be used for construction temporarily
@@ -39,16 +39,16 @@ Primaries Rad2xy(const Illuminant &ill, const ColorMatchingFunction &cmf) {
 }
 
 CIELAB XYZ2Lab(const Tristimulus &illXYZ, const Tristimulus &sampleXYZ) {
-  if (illXYZ.XYZ().cols() != 1) {
+  if (illXYZ.m().cols() != 1) {
     throw std::invalid_argument("XYZ2Lab only takes one sample of illuminant XYZ.");
   }
   if (illXYZ.Y()[0] != 100) {
     throw std::invalid_argument("XYZ2Lab only takes normalized illuminant XYZ with Y = 100.");
   }
-  Mat fXYZ = (1.0 / illXYZ.XYZ().array()).matrix().asDiagonal() * sampleXYZ.XYZ();
+  Mat fXYZ = (1.0 / illXYZ.m().array()).matrix().asDiagonal() * sampleXYZ.m();
   fXYZ = (fXYZ.array() > CIELAB_FXYZ_LIMIT).select(pow(fXYZ.array(), CIELAB_FXYZ_C1),
                                                    fXYZ.array() * CIELAB_FXYZ_C2 + CIELAB_FXYZ_C3);
-  Mat LabMat(3, sampleXYZ.XYZ().cols());
+  Mat LabMat(3, sampleXYZ.m().cols());
   LabMat << CIELAB_LAB_C1 * fXYZ.row(1).array() - CIELAB_LAB_C2,
       CIELAB_LAB_C3 * (fXYZ.row(0).array() - fXYZ.row(1).array()),
       CIELAB_LAB_C4 * (fXYZ.row(1).array() - fXYZ.row(2).array());
@@ -70,14 +70,14 @@ CIELAB XYZ2Lab(const Tristimulus &sampleXYZ) {
 }
 
 Tristimulus Lab2XYZ(const Tristimulus &illXYZ, const CIELAB &Lab) {
-  if (illXYZ.XYZ().cols() != 1) {
+  if (illXYZ.m().cols() != 1) {
     throw std::invalid_argument("Lab2XYZ only takes one sample of illuminant XYZ.");
   }
   if (illXYZ.Y()[0] != 100) {
     throw std::invalid_argument("Lab2XYZ only takes normalized illuminant XYZ with Y = 100.");
   }
   Vec fL = (Lab.L().array() + CIELAB_LAB_C2) / CIELAB_LAB_C1;
-  Mat fXYZ(3, Lab.Lab().cols());
+  Mat fXYZ(3, Lab.m().cols());
   fXYZ << fL.array() + Lab.a().array() / CIELAB_LAB_C3,
       fL,
       fL.array() - Lab.b().array() / CIELAB_LAB_C4;
@@ -86,7 +86,7 @@ Tristimulus Lab2XYZ(const Tristimulus &illXYZ, const CIELAB &Lab) {
       (fXYZ.array() - CIELAB_FXYZ_C3) / CIELAB_FXYZ_C2,
       pow(fXYZ.array(), CIELAB_FXYZ_C1_INVERSE));
 
-  fXYZ = illXYZ.XYZ().asDiagonal() * fXYZ;
+  fXYZ = illXYZ.m().asDiagonal() * fXYZ;
   return Tristimulus(fXYZ);
 }
 
@@ -109,11 +109,11 @@ Tristimulus Illuminantxy2XYZ(const Primaries &illxy, double normalizedY) {
     throw std::invalid_argument("Non-chromaticities Primaries argument passed into where chromaticities are required.");
   }
   Vec illX = illxy.primary("x").array() / illxy.primary("y").array() * normalizedY;
-  Vec illY(illxy.data().cols());
+  Vec illY(illxy.m().cols());
   illY.setOnes();
   illY = illY.array() * normalizedY;
   Vec illZ = (1.0 - illxy.primary("x").array() - illxy.primary("y").array()) / illxy.primary("y").array() * normalizedY;
-  Mat illXYZMat(3, illxy.data().cols());
+  Mat illXYZMat(3, illxy.m().cols());
   illXYZMat << illX,
       illY,
       illZ;

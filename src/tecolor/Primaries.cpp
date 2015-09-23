@@ -37,13 +37,13 @@ Primaries::Primaries(const Eigen::MatrixXd &data,
 }
 
 Primaries::Primaries(const Primaries &primaries)
-    : data_(new MatrixXd(primaries.data())),
+    : data_(new MatrixXd(primaries.m())),
       primary_names_(primaries.primary_names()) {
   init_primary_indexes();
 }
 
 const Primaries &Primaries::operator=(const Primaries &primaries) {
-  data_.reset(new MatrixXd(primaries.data()));
+  data_.reset(new MatrixXd(primaries.m()));
   primary_names_ = primaries.primary_names();
   primary_indexes_ = primaries.primary_indexes_;
 
@@ -54,7 +54,7 @@ std::shared_ptr<Eigen::MatrixXd> Primaries::get_data_ptr() {
   return data_;
 }
 
-const Eigen::MatrixXd &Primaries::data() const {
+const Eigen::MatrixXd &Primaries::m() const {
   return *data_;
 }
 

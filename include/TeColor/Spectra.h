@@ -25,7 +25,7 @@ class Spectra : public SpectraMatrix {
   const Spectra& operator=(const Spectra& spectra);
   std::shared_ptr<Eigen::MatrixXd> get_data_ptr();
   std::shared_ptr<Eigen::VectorXd> get_wavelengths_ptr();
-  const Eigen::MatrixXd& spectra() const;
+  const Eigen::MatrixXd& m() const;
   const Eigen::VectorXd spectrum_at(Index index) const;
   const Eigen::VectorXd& wavelengths() const;
   Eigen::MatrixXd& spectra();

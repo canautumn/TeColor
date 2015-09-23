@@ -39,13 +39,13 @@ Spectra::Spectra(const Eigen::MatrixXd &data,
 }
 
 Spectra::Spectra(const Spectra &spectra)
-    : data_(new MatrixXd(spectra.spectra())),
-      wavelengths_(new VectorXd(spectra.wavelengths())) { }
+    : data_(new MatrixXd(spectra.m())),
+      wavelengths_(new VectorXd(spectra.m())) { }
 
 
 const Spectra &Spectra::operator=(const Spectra &spectra) {
-  data_.reset(new MatrixXd(spectra.spectra()));
-  wavelengths_.reset(new VectorXd(spectra.wavelengths()));
+  data_.reset(new MatrixXd(spectra.m()));
+  wavelengths_.reset(new VectorXd(spectra.m()));
   return *this;
 }
 
@@ -60,7 +60,7 @@ std::shared_ptr<Eigen::VectorXd> Spectra::get_wavelengths_ptr() {
 }
 
 
-const Eigen::MatrixXd &Spectra::spectra() const {
+const Eigen::MatrixXd &Spectra::m() const {
   return *data_;
 }
 

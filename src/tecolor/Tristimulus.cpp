@@ -32,8 +32,8 @@ const Tristimulus &Tristimulus::operator=(const Tristimulus &tristimulus) {
   return *this;
 }
 
-const Eigen::MatrixXd &Tristimulus::XYZ() const {
-  return primaries_->data();
+const Eigen::MatrixXd &Tristimulus::m() const {
+  return primaries_->m();
 }
 
 Tristimulus::Tristimulus(const Eigen::MatrixXd &data)

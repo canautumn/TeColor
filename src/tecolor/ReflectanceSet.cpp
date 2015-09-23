@@ -33,8 +33,8 @@ ReflectanceSet::ReflectanceSet(tecolor::BuiltInReflectanceSetName refl)
   EigenVectorInitializer(spectra_->wavelengths(), *num_wavelengths, wavelengths);
 }
 
-const Eigen::MatrixXd &ReflectanceSet::spectra() const {
-  return spectra_->spectra();
+const Eigen::MatrixXd &ReflectanceSet::m() const {
+  return spectra_->m();
 }
 
 const Eigen::VectorXd &ReflectanceSet::wavelengths() const {

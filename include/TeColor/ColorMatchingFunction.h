@@ -21,7 +21,7 @@ class ColorMatchingFunction {
  public:
   ColorMatchingFunction(ColorMatchingFunctionObserver obs);
   ColorMatchingFunction(ColorMatchingFunctionObserver obs, std::string database_path);
-  const Eigen::MatrixXd& cmf() const;
+  const Eigen::MatrixXd& m() const;
   const Eigen::VectorXd x() const;
   const Eigen::VectorXd y() const;
   const Eigen::VectorXd z() const;

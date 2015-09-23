@@ -35,8 +35,8 @@ ColorMatchingFunction::ColorMatchingFunction(ColorMatchingFunctionObserver obs)
 
 
 
-const Eigen::MatrixXd& ColorMatchingFunction::cmf() const {
-  return spectra_->spectra();
+const Eigen::MatrixXd& ColorMatchingFunction::m() const {
+  return spectra_->m();
 }
 
 

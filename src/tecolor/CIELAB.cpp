@@ -35,8 +35,8 @@ const CIELAB &CIELAB::operator=(const CIELAB &cielab) {
   return *this;
 }
 
-const Eigen::MatrixXd &CIELAB::Lab() const {
-  return primaries_->data();
+const Eigen::MatrixXd &CIELAB::m() const {
+  return primaries_->m();
 }
 
 const Eigen::VectorXd CIELAB::L() const {
