@@ -1,5 +1,6 @@
 #include <iostream>
 #include <TeColor/SpectralKit.h>
+#include <TeColor/ColorimetryKit.h>
 
 using namespace std;
 using namespace tecolor;
