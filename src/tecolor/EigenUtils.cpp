@@ -36,4 +36,16 @@ void EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Va
   }
 }
 
+Mat EigenMatrixRowMajorInitializer(kValueArray &data, kIndex cols) {
+  kIndex rows = data.size() / cols + (data.size() % cols ? 1 : 0);
+  Mat mat(rows, cols);
+  for (Index r = 0; r < rows; ++r) {
+    for (Index c = 0; c < cols; ++c) {
+      Index idx = r * cols + c;
+      mat(r, c) = idx < data.size() ? data[idx] : 0;
+    }
+  }
+  return mat;
+}
+
 } // namespace tecolor

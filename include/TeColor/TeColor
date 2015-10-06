@@ -1,0 +1,9 @@
+
+#ifndef TECOLOR_TECOLOR_H
+#define TECOLOR_TECOLOR_H
+
+#include <TeColor/SpectralKit.h>
+#include <TeColor/ColorimetryKit.h>
+#include <TeColor/AppearanceKit.h>
+
+#endif //TECOLOR_TECOLOR_H

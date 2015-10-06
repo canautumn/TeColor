@@ -21,6 +21,8 @@ void EigenMatrix1ColumnInitializer(Eigen::MatrixXd &m,
 
 void EigenVectorInitializer(Eigen::VectorXd &v, Index size, const std::vector<Value> *data);
 
+Mat EigenMatrixRowMajorInitializer(kValueArray &data, kIndex cols);
+
 }
 
 #endif //TECOLOR_EIGENUTILS_H

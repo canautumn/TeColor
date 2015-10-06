@@ -7,14 +7,14 @@
 namespace tecolor {
 
 CIELAB::CIELAB() : primaries_(new Primaries(3, 1, {"L", "a", "b"})) {
-  primaries_->data() << 0, 0, 0;
+  primaries_->m() << 0, 0, 0;
 }
 
 CIELAB::CIELAB(Index num_samples)
     : primaries_(new Primaries(3, num_samples, {"L", "a", "b"})) {
   for (Index i = 0; i < 3; ++i) {
     for (Index j = 0; j < num_samples; ++j) {
-      primaries_->data()(i, j) = 0;
+      primaries_->m()(i, j) = 0;
     }
   }
 }

@@ -32,7 +32,7 @@ class Primaries {
   std::shared_ptr<Eigen::MatrixXd> get_data_ptr();
   const Eigen::MatrixXd &m() const;
   const std::vector<std::string> &primary_names() const;
-  Eigen::MatrixXd &data();
+  Eigen::MatrixXd &m();
   std::vector<std::string> &primary_names();
   const Eigen::VectorXd primary(std::string primary_name) const;
 };

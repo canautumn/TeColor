@@ -63,7 +63,7 @@ const std::vector<std::string> &Primaries::primary_names() const {
   return primary_names_;
 }
 
-Eigen::MatrixXd &Primaries::data() {
+Eigen::MatrixXd &Primaries::m() {
   return *data_;
 }
 

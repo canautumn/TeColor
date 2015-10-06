@@ -8,7 +8,7 @@ namespace tecolor {
 
 
 Tristimulus::Tristimulus() : primaries_(new Primaries(3, 1, {"X", "Y", "Z"})) {
-  primaries_->data() << 0, 0, 0;
+  primaries_->m() << 0, 0, 0;
 }
 
 
@@ -16,7 +16,7 @@ Tristimulus::Tristimulus(Index num_samples)
     : primaries_(new Primaries(3, num_samples, {"X", "Y", "Z"})) {
   for (Index i = 0; i < 3; ++i) {
     for (Index j = 0; j < num_samples; ++j) {
-      primaries_->data()(i, j) = 0;
+      primaries_->m()(i, j) = 0;
     }
   }
 }

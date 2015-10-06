@@ -34,7 +34,7 @@ Primaries Rad2Yxy(const Illuminant &ill, const ColorMatchingFunction &cmf) {
 }
 
 Primaries Rad2xy(const Illuminant &ill, const ColorMatchingFunction &cmf) {
-  Mat Yxy = Rad2Yxy(ill, cmf).data();
+  Mat Yxy = Rad2Yxy(ill, cmf).m();
   return Primaries(Mat(Yxy.block(1, 0, 2, Yxy.cols())), {"x", "y"});
 }
 
